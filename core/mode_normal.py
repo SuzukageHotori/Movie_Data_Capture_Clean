@@ -142,7 +142,8 @@ def main_mode_1(movie_path, movie_info):
 
     # 生成nfo文件
     if config.getBoolValue("capture.write_nfo_switch"):
-        nfo_path = legalization_of_file_path(os.path.join(movie_target_dir, f"{target_file_name}.nfo"))
+        # nfo_path = legalization_of_file_path(os.path.join(movie_target_dir, f"{target_file_name}.nfo"))
+        nfo_path = os.path.join(movie_target_dir, f"{target_file_name}.nfo")
         try:
             print_nfo_file(nfo_path,fanart_path,poster_path,thumb_path,movie_info)
             logger.info("write nfo OK")
@@ -152,7 +153,8 @@ def main_mode_1(movie_path, movie_info):
             return
     
     # 生成影片最终全路径，进行长度控制
-    new_movie_path = legalization_of_file_path(os.path.join(movie_target_dir, target_file_name + movie_suffix))
+    # new_movie_path = legalization_of_file_path(os.path.join(movie_target_dir, target_file_name + movie_suffix))
+    new_movie_path = os.path.join(movie_target_dir, target_file_name + movie_suffix)
     logger.info(f"move to [{new_movie_path[0:cn_space(new_movie_path, 150)]}]")
     # 移动影片
     shutil.move(movie_path, new_movie_path)
